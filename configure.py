@@ -21,16 +21,12 @@ class Config:
     fontPackWeight = [300, 350, 400, 450, 500, 600, 700]
     fontPackRegion = [
         "Bliz", "Neut", "CL",
-        "PSimp", "PSimpChat",
         "Pinyin", "Pinyin,Romaja", "Romaja",
     ]
     fontPackFeature = ["CyR", "OSF", "RP", "SC"]
     # feature tags must be sorted alphabetically
     fontPackExportFeature = [
-        ("Bliz", ["RP"]),
         ("Neut", ["CyR"]),
-        ("Neut", ["OSF"]),
-        ("Neut", ["SC"]),
         ("Pinyin", ["CyR"]),
         ("Pinyin,Romaja", ["CyR"]),
         ("Romaja", ["CyR"]),
