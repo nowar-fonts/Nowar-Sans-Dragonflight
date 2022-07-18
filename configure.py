@@ -7,12 +7,12 @@ from itertools import product
 
 
 class Config:
-    version = "1.0.1"
-    fontRevision = 1 + 0x0001 / 0x10000
+    version = "1.0.2"
+    fontRevision = 1 + 0x0002 / 0x10000
     vendor = "Nowar Typeface"
     vendorId = "NOWR"
     vendorUrl = "https://github.com/nowar-fonts"
-    copyright = "Copyright © 2018—2021 Cyano Hao and Nowar Typeface, with Reserved Font Name “Nowar”, “Новар”, “Νοωαρ”, “有爱”, and “有愛”. Portions Copyright 2015 Google LLC.. Portions © 2014-2021 Adobe (http://www.adobe.com/), with Reserved Font Name 'Source'."
+    copyright = "Copyright © 2018—2022 Cyano Hao and Nowar Typeface, with Reserved Font Name “Nowar”, “Новар”, “Νοωαρ”, “有爱”, and “有愛”. Portions Copyright 2015 Google LLC.. Portions © 2014-2021 Adobe (http://www.adobe.com/), with Reserved Font Name 'Source'."
     designer = "Cyano Hao (character set definition & modification for World of Warcraft); Monotype Design Team (Latin, Greek & Cyrillic); Ryoko NISHIZUKA 西塚涼子 (kana, bopomofo & ideographs); Sandoll Communications 산돌커뮤니케이션, Soo-young JANG 장수영 & Joo-yeon KANG 강주연 (hangul elements, letters & syllables); Dr. Ken Lunde (project architect, glyph set definition & overall production); Masataka HATTORI 服部正貴 (production & ideograph elements)"
     designerUrl = "https://github.com/CyanoHao"
     license = "This Font Software is licensed under the SIL Open Font License, Version 1.1. This Font Software is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the SIL Open Font License for the specific language, permissions and limitations governing your use of this Font Software."
@@ -848,11 +848,19 @@ if __name__ == "__main__":
             "ARIALN": GetCommonChatFont(w, r, fea),
             "FRIZQT__": GetCommonFont(w, r, fea),
         }
+        fontFileIdMap = {
+            "ARIALN": 615958,
+            "FRIZQT__": 615960,
+        }
 
         if regionalVariant[r]["enUS"]:
             fontlist.update({
                 "skurri": GetLatinFont(w, r, fea),
                 "MORPHEUS": GetLatinChatFont(w, r, fea),
+            })
+            fontFileIdMap.update({
+                "skurri": 615961,
+                "MORPHEUS": 615962,
             })
 
         if regionalVariant[r]["ruRU"]:
@@ -861,12 +869,22 @@ if __name__ == "__main__":
                 "SKURRI_CYR": GetLatinFont(w, r, fea),
                 "MORPHEUS_CYR": GetLatinChatFont(w, r, fea),
             })
+            fontFileIdMap.update({
+                "FRIZQT___CYR": 615971,
+                "SKURRI_CYR": 615973,
+                "MORPHEUS_CYR": 615976,
+            })
 
         if regionalVariant[r]["zhCN"]:
             fontlist.update({
                 "ARKai_C": GetHansCombatFont(w, r, fea),
                 "ARKai_T": GetHansFont(w, r, fea),
                 "ARHei": GetHansChatFont(w, r, fea),
+            })
+            fontFileIdMap.update({
+                "ARKai_C": 615970,
+                "ARKai_T": 615974,
+                "ARHei": 615964,
             })
 
         if regionalVariant[r]["zhTW"]:
@@ -877,6 +895,13 @@ if __name__ == "__main__":
                 "bKAI00M": GetHantCombatFont(w, r, fea),
                 "blei00d": GetHantFont(w, r, fea),
             })
+            fontFileIdMap.update({
+                "arheiuhk_bd": 2888293,
+                "bHEI00M": 615969,
+                "bHEI01B": 615977,
+                "bKAI00M": 615965,
+                "blei00d": 615963,
+            })
 
         if regionalVariant[r]["koKR"]:
             fontlist.update({
@@ -885,13 +910,20 @@ if __name__ == "__main__":
                 "K_Damage": GetKoreanCombatFont(w, r, fea),
                 "K_Pagetext": GetKoreanDisplayFont(w, r, fea),
             })
+            fontFileIdMap.update({
+                "2002": 615966,
+                "2002B": 615968,
+                "K_Damage": 615975,
+                "K_Pagetext": 615972,
+            })
 
         finalOtfDeps.update(map(json.dumps, fontlist.values()))
 
         makefile["rule"][pack] = {
             "depend": ["out/{}/Fonts/{}.ttf".format(target, f) for f in fontlist],
             "command": [
-                "cd out/{};".format(target) +
+                f"cd out/{target};" +
+                "for id in " + " ".join(str(id_) for id_ in sorted(fontFileIdMap.values())) + "; do mkdir -p Fonts/$$id.slugo; done;" +
                 "cp ../../LICENSE.txt Fonts/LICENSE.txt;" +
                 "7z a -t7z -m0=LZMA:d=512m:fb=273 -ms ../../$@ Fonts/"
             ]
