@@ -14,9 +14,7 @@
 
 ## 下載向導
 
-[GitHub 上的最新發佈](https://github.com/nowar-fonts/Nowar-Sans/releases)
-
-鏡像：[Gitee](https://gitee.com/nowar-fonts/Nowar-Sans)
+[GitHub 上的最新發佈](https://github.com/nowar-fonts/Nowar-Sans-Dragonflight/releases)
 
 有愛黑體有 7 種字重和 5 種地區變體，此外還有若干特徵。更多字重（從 200 到 900 的任意數值）可以從原始碼構建，參見[英語文件](README.md)。
 
