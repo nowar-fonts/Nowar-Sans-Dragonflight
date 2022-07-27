@@ -1,6 +1,6 @@
 **English** [简体中文](README-Hans.md) [繁體中文](README-Hant.md)
 
-# Nowar Sans for _World of Warcraft_
+# Dragonflight Sans (Nowar Sans Slim for _World of Warcraft: Dragonflight_)
 
 This is Nowar Sans, font packs for _World of Warcraft_ and _WoW Classic_ that support all client languages. Nowar Sans is based on [Noto Sans](https://github.com/googlefonts/noto-fonts) and [Source Han Sans](https://github.com/adobe-fonts/source-han-sans).
 
@@ -16,7 +16,7 @@ This is Nowar Sans, font packs for _World of Warcraft_ and _WoW Classic_ that su
 
 [Latest release at GitHub](https://github.com/nowar-fonts/Nowar-Sans-Dragonflight/releases)
 
-Nowar Sans is shipped in 7 weights and 5 regional variants, with several features. More weights (any number from 200 to 900!) can be built form source.
+Nowar Sans is shipped in 7 weights and several regional variants. More weights (any number from 200 to 900!) can be built form source.
 
 ### Weights
 
@@ -45,26 +45,9 @@ CL is the “classical variant” with classical Chinese character orthography (
 | -- | ------------------- | --------- |
 | CL | Classical (UI)      | Classical |
 
-PSimp and PSimpChat are special variants for 繁體中文 that remap traditional Chinese character to simplified ones.
-
-| | Common Fonts | 繁體中文 Text, Combat and Tooltip Fonts | 繁體中文 Chat Fonts | European, 简体中文 and 한국어 |
-| --------- | ----------------------------- | ------------------------- | ------------------------- | --- |
-| PSimp     | Mainland China (UI, Remapped) | Mainland China (Remapped) | Mainland China            | N/A |
-| PSimpChat | Mainland China (UI, Remapped) | Mainland China (Remapped) | Mainland China (Remapped) | N/A |
-
 * European: English, Español (AL), Português, Deutsch, Español (EU), Français, Italiano, and Русский.
 * UI: Ambiguous punctations are treated as Western; CJK puctations are half-width.
 * Common fonts: `FRIZQT__` and `ARIALN`, which are hard-coded in some addons.
-
-### Features
-
-| Tag | Name        | Description                                                            |
-| --- | ----------- | ---------------------------------------------------------------------- |
-| OSF | Oldstyle    | Oldstyle (non-lining), proportional figure.                             |
-| RP  | Roleplaying | `丶` (U+4E36) is mapped to the same glyph as `·` (U+00B7, MIDDLE DOT). |
-| SC  | Smallcaps   | Small capitals for Latin.                                              |
-
-Pre-built feature variants: `Bliz,RP`, `Neut,OSF`, `Neut,SC`.
 
 ### PTR Cross Language Distributions (XLang)
 
@@ -98,109 +81,7 @@ As a result, the XLang variants can be confusing and thus are distributed under 
 
 ## How to Build
 
-### Dependencies
-
-+ basic Unix utils (`zstd` included),
-+ [Python](https://www.python.org/),
-+ [fontTools](https://github.com/fonttools/fonttools),
-+ [Node.js](https://nodejs.org/),
-+ [otfcc](https://github.com/caryll/otfcc) and
-+ [7-Zip](https://www.7-zip.org/) (add to `PATH`).
-
-Note:
-+ Choose 64-bit version. 32-bit version will lead to out-of-memory issue.
-
-### Build Feature Variant
-
-Prepare submodules:
-```bash
-git submodule update --init --recursive
-```
-
-Prepare Node.js dependency:
-```bash
-npm install
-```
-
-Run `configure.py` to generate Makefile:
-```bash
-python configure.py
-```
-
-Put Source Han Sans variable OTF files to `source/shs/`.
-
-Then make a specific variant:
-```bash
-make <region>,<features>-<weight> -j<threads>
-```
-Note: Features must be sorted alphabetically. (`OSF`, `RP`, `SC`).
-
-e.g.
-```bash
-make CN,OSF,RP-400 -j4
-```
-
-The output is `out/NowarSans-<region>,<features>-<weight>-<version>.7z`.
-
-### Customise Weight
-
-Any number from 200 to 900 (both included) is valid weight value for Nowar Sans. Numbers from 100 (included) to 200 (excluded) are also available, but CJK part will be same weight as 200.
-
-To build a font pack with customised weight value, modify `configure.py`:
-```python
-class Config:
-    # put your weight here
-    fontPackWeight = [ <your_weight> ]
-```
-
-Then, run `python configure.py` to generate `Makefile`. The new weight (with optional feature) can be built by:
-```bash
-make <region>,<features>-<weight> -j<threads>
-```
-
-### Create Regional Variant
-
-To build exactly what you need, modify `configure.py`:
-```python
-class Config:
-    # put your variant here
-    fontPackRegion = [ <your_region> ]
-
-# define the variant here.
-regionalVariant = { ... }
-```
-
-For example, the “CNmulti” multi-orthography variant,
-
-|         | European            | 简体中文       | 繁體中文 | 한국어        |
-| ------- | ------------------- | -------------- | -------- | ------------- |
-| CNmulti | Mainland China (UI) | Mainland China | Taiwan   | S. Korea (UI) |
-
-```python
-class Config:
-    fontPackRegion = [ "CNmulti" ]
-
-regionalVariant = {
-    "CNmulti": {
-        "base": "CN",
-        "enUS": True,
-        "ruRU": True,
-        "zhCN": "CN",
-        "zhTW": "TW",
-        "koKR": "KR",
-    }
-}
-```
-
-Then, run `python configure.py` to generate `Makefile`. The new regional variant (with optional feature) can be built by:
-```bash
-make <region>,<features>-<weight> -j<threads>
-```
-e.g.
-```bash
-make CNmulti-400 -j4
-make CNmulti,OSF-400 -j4
-```
+Almost same as [Nowar Sans](https://github.com/nowar-fonts/Nowar-Sans), except that required Source Han Sans (subset) files are included, and customized regional variants are not supported.
 
 ## Credit
 
@@ -209,27 +90,3 @@ Latin, Greek and Cyrillic characters are built from [Noto Source](https://github
 CJK Ideographs, Kana and Hangul are from [Source Han Sans](https://github.com/adobe-fonts/source-han-sans) by Adobe.
 
 The traditional Chinese to simplified Chinese conversion table is from [Open Chinese Convert project](https://github.com/BYVoid/OpenCC).
-
-### Build Noto Sans Variable-OTF from Source
-
-First of all, prepare the repo.
-
-```bash
-git clone --recursive https://github.com/googlefonts/noto-source.git
-cd noto-source
-./build setup
-```
-
-Then activate the build environment.
-
-```bash
-source env/bin/activate
-```
-
-To build the font, call the `fontmake` command.
-
-```bash
-fontmake -g src/NotoSans-MM.glyphs -o variable-cff2
-```
-
-The output is in `variable_otf/`.

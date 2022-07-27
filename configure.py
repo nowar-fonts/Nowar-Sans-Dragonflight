@@ -134,46 +134,6 @@ regionalVariant = {
         "koKR": "CL",
         "xmod": [("Romaja", [])],
     },
-    "CN": {  # deprecated
-        "base": "CN",
-        "enUS": True,
-        "ruRU": True,
-        "zhCN": "CN",
-        "zhTW": "TW",
-        "koKR": "KR",
-    },
-    "TW": {  # deprecated
-        "base": "TW",
-        "enUS": True,
-        "ruRU": True,
-        "zhCN": "CN",
-        "zhTW": "TW",
-        "koKR": "KR",
-    },
-    "HK": {  # deprecated
-        "base": "HK",
-        "enUS": True,
-        "ruRU": True,
-        "zhCN": "CN",
-        "zhTW": "HK",
-        "koKR": "KR",
-    },
-    "JP": {  # deprecated
-        "base": "JP",
-        "enUS": True,
-        "ruRU": True,
-        "zhCN": "CN",
-        "zhTW": "TW",
-        "koKR": "KR",
-    },
-    "KR": {  # deprecated
-        "base": "KR",
-        "enUS": True,
-        "ruRU": True,
-        "zhCN": "CN",
-        "zhTW": "TW",
-        "koKR": "KR",
-    },
 }
 
 
