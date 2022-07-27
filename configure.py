@@ -7,8 +7,8 @@ from itertools import product
 
 
 class Config:
-    version = "1.0.2"
-    fontRevision = 1 + 0x0002 / 0x10000
+    version = "1.0.3"
+    fontRevision = 1 + 0x0003 / 0x10000
     vendor = "Nowar Typeface"
     vendorId = "NOWR"
     vendorUrl = "https://github.com/nowar-fonts"
@@ -180,77 +180,6 @@ regionalVariant = {
 class LanguageId(enum.IntEnum):
     enUS = 0x0409
 
-    deAT = 0x0C07
-    deCH = 0x0807
-    deDE = 0x0407
-    deLI = 0x1407
-    deLU = 0x1007
-
-    elGR = 0x0408
-
-    enAU = 0x0C09
-    enBZ = 0x2809
-    enCA = 0x1009
-    enCaribbean = 0x2409
-    enGB = 0x0809
-    enIE = 0x1809
-    enIN = 0x4009
-    enJM = 0x2009
-    enMY = 0x4409
-    enNZ = 0x1409
-    enPH = 0x3409
-    enSG = 0x4809
-    enTT = 0x2C09
-    enZA = 0x1C09
-    enZW = 0x3009
-
-    esAR = 0x2C0A
-    esBO = 0x400A
-    esCL = 0x340A
-    esCO = 0x240A
-    esCR = 0x140A
-    esDO = 0x1C0A
-    esEC = 0x300A
-    esES = 0x0C0A
-    esEST = 0x040A
-    esGT = 0x100A
-    esHN = 0x480A
-    esMX = 0x080A
-    esNI = 0x4C0A
-    esPA = 0x180A
-    esPE = 0x280A
-    esPR = 0x500A
-    esPY = 0x3C0A
-    esSV = 0x440A
-    esUS = 0x540A
-    esUY = 0x380A
-    esVE = 0x200A
-
-    frBE = 0x080C
-    frCA = 0x0C0C
-    frCH = 0x100C
-    frFR = 0x040C
-    frLU = 0x140C
-    frMC = 0x180C
-
-    itCH = 0x0810
-    itIT = 0x0410
-
-    jaJP = 0x0411
-
-    koKR = 0x0412
-
-    ptBR = 0x0416
-    ptPT = 0x0816
-
-    ruRU = 0x0419
-
-    zhCN = 0x0804
-    zhHK = 0x0C04
-    zhMO = 0x1404
-    zhSG = 0x1004
-    zhTW = 0x0404
-
 
 weightMap = {
     100: "Thin",
@@ -404,80 +333,7 @@ tagNameMap = {**regionNameMap, **featureNameMap}
 def LocalizedFamily(p):
     if "nameList" not in LocalizedFamily.__dict__:
         LocalizedFamily.nameList = {
-            LanguageId.enUS: "Nowar Sans",
-
-            LanguageId.deAT: "Nowar Grotesk",
-            LanguageId.deCH: "Nowar Grotesk",
-            LanguageId.deDE: "Nowar Grotesk",
-            LanguageId.deLI: "Nowar Grotesk",
-            LanguageId.deLU: "Nowar Grotesk",
-
-            LanguageId.elGR: "Νοωαρ Σανς",
-
-            LanguageId.enAU: "Nowar Sans",
-            LanguageId.enBZ: "Nowar Sans",
-            LanguageId.enCA: "Nowar Sans",
-            LanguageId.enCaribbean: "Nowar Sans",
-            LanguageId.enGB: "Nowar Sans",
-            LanguageId.enIE: "Nowar Sans",
-            LanguageId.enIN: "Nowar Sans",
-            LanguageId.enJM: "Nowar Sans",
-            LanguageId.enMY: "Nowar Sans",
-            LanguageId.enNZ: "Nowar Sans",
-            LanguageId.enPH: "Nowar Sans",
-            LanguageId.enSG: "Nowar Sans",
-            LanguageId.enTT: "Nowar Sans",
-            LanguageId.enZA: "Nowar Sans",
-            LanguageId.enZW: "Nowar Sans",
-
-            LanguageId.esAR: "Nowar Palo",
-            LanguageId.esBO: "Nowar Palo",
-            LanguageId.esCL: "Nowar Palo",
-            LanguageId.esCO: "Nowar Palo",
-            LanguageId.esCR: "Nowar Palo",
-            LanguageId.esDO: "Nowar Palo",
-            LanguageId.esEC: "Nowar Palo",
-            LanguageId.esES: "Nowar Palo",
-            LanguageId.esEST: "Nowar Palo",
-            LanguageId.esGT: "Nowar Palo",
-            LanguageId.esHN: "Nowar Palo",
-            LanguageId.esMX: "Nowar Palo",
-            LanguageId.esNI: "Nowar Palo",
-            LanguageId.esPA: "Nowar Palo",
-            LanguageId.esPE: "Nowar Palo",
-            LanguageId.esPR: "Nowar Palo",
-            LanguageId.esPY: "Nowar Palo",
-            LanguageId.esSV: "Nowar Palo",
-            LanguageId.esUS: "Nowar Palo",
-            LanguageId.esUY: "Nowar Palo",
-            LanguageId.esVE: "Nowar Palo",
-
-            LanguageId.frBE: "Nowar Linéale",
-            LanguageId.frCA: "Nowar Linéale",
-            LanguageId.frCH: "Nowar Linéale",
-            LanguageId.frFR: "Nowar Linéale",
-            LanguageId.frLU: "Nowar Linéale",
-            LanguageId.frMC: "Nowar Linéale",
-
-            # senza (without) grazie (serif)
-            LanguageId.itCH: "Nowar Senza",
-            LanguageId.itIT: "Nowar Senza",
-
-            LanguageId.jaJP: "有愛角ゴシック",
-
-            LanguageId.koKR: "有愛 고딕",
-
-            # sem (without) serifa (serif)
-            LanguageId.ptBR: "Nowar Sem",
-            LanguageId.ptPT: "Nowar Sem",
-
-            LanguageId.ruRU: "Новар Гротеск",
-
-            LanguageId.zhCN: "有爱黑体",
-            LanguageId.zhHK: "有愛黑體",
-            LanguageId.zhMO: "有愛黑體",
-            LanguageId.zhSG: "有爱黑体",
-            LanguageId.zhTW: "有愛黑體",
+            LanguageId.enUS: "Dragonflight Sans",
         }
     return LocalizedFamily.nameList
 
@@ -830,7 +686,7 @@ if __name__ == "__main__":
     for r, w, fea in product(config.fontPackRegion, config.fontPackWeight, powerset(config.fontPackFeature)):
         tagList = [r] + fea
         target = "{}-{}".format(TagListToStr(tagList), w)
-        pack = "out/NowarSans-{}-${{VERSION}}.7z".format(target)
+        pack = "out/DragonflightSans-{}-${{VERSION}}.7z".format(target)
 
         makefile["rule"][".PHONY"]["depend"].append(target)
         makefile["rule"][target] = {
@@ -844,19 +700,11 @@ if __name__ == "__main__":
             "ARIALN": GetCommonChatFont(w, r, fea),
             "FRIZQT__": GetCommonFont(w, r, fea),
         }
-        fontFileIdMap = {
-            "ARIALN": 615958,
-            "FRIZQT__": 615960,
-        }
 
         if regionalVariant[r]["enUS"]:
             fontlist.update({
                 "skurri": GetLatinFont(w, r, fea),
                 "MORPHEUS": GetLatinChatFont(w, r, fea),
-            })
-            fontFileIdMap.update({
-                "skurri": 615961,
-                "MORPHEUS": 615962,
             })
 
         if regionalVariant[r]["ruRU"]:
@@ -865,22 +713,12 @@ if __name__ == "__main__":
                 "SKURRI_CYR": GetLatinFont(w, r, fea),
                 "MORPHEUS_CYR": GetLatinChatFont(w, r, fea),
             })
-            fontFileIdMap.update({
-                "FRIZQT___CYR": 615971,
-                "SKURRI_CYR": 615973,
-                "MORPHEUS_CYR": 615976,
-            })
 
         if regionalVariant[r]["zhCN"]:
             fontlist.update({
                 "ARKai_C": GetHansCombatFont(w, r, fea),
                 "ARKai_T": GetHansFont(w, r, fea),
                 "ARHei": GetHansChatFont(w, r, fea),
-            })
-            fontFileIdMap.update({
-                "ARKai_C": 615970,
-                "ARKai_T": 615974,
-                "ARHei": 615964,
             })
 
         if regionalVariant[r]["zhTW"]:
@@ -891,13 +729,6 @@ if __name__ == "__main__":
                 "bKAI00M": GetHantCombatFont(w, r, fea),
                 "blei00d": GetHantFont(w, r, fea),
             })
-            fontFileIdMap.update({
-                "arheiuhk_bd": 2888293,
-                "bHEI00M": 615969,
-                "bHEI01B": 615977,
-                "bKAI00M": 615965,
-                "blei00d": 615963,
-            })
 
         if regionalVariant[r]["koKR"]:
             fontlist.update({
@@ -906,12 +737,6 @@ if __name__ == "__main__":
                 "K_Damage": GetKoreanCombatFont(w, r, fea),
                 "K_Pagetext": GetKoreanDisplayFont(w, r, fea),
             })
-            fontFileIdMap.update({
-                "2002": 615966,
-                "2002B": 615968,
-                "K_Damage": 615975,
-                "K_Pagetext": 615972,
-            })
 
         finalOtfDeps.update(map(json.dumps, fontlist.values()))
 
@@ -919,7 +744,6 @@ if __name__ == "__main__":
             "depend": ["out/{}/Fonts/{}.ttf".format(target, f) for f in fontlist],
             "command": [
                 f"cd out/{target};" +
-                "for id in " + " ".join(str(id_) for id_ in sorted(fontFileIdMap.values())) + "; do mkdir -p Fonts/$$id.slugo; done;" +
                 "cp ../../LICENSE.txt Fonts/LICENSE.txt;" +
                 "7z a -t7z -m0=LZMA:d=512m:fb=273 -ms ../../$@ Fonts/"
             ]

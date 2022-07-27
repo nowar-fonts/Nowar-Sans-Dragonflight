@@ -1,6 +1,5 @@
 Makefile
 __pycache__/
 /node_modules/
-/source/shs/*.otf
 /build/
 /out/
