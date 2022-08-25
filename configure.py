@@ -825,7 +825,7 @@ if __name__ == "__main__":
             "depend": [f"source/noto/NotoSans-VF.otf"],
             "command": [
                 "mkdir -p build/noto/",
-                f"node --max-old-space-size=5120 instancer.js {ParamToArgument({'input': '$<', 'output': '$@', 'instance': notoInstance})}",
+                f"node --max-old-space-size=2048 instancer.js {ParamToArgument({'input': '$<', 'output': '$@', 'instance': notoInstance})}",
             ]
         }
 
@@ -842,7 +842,7 @@ if __name__ == "__main__":
                 "depend": [f"source/noto/NotoSans-VF.otf"],
                 "command": [
                     "mkdir -p build/noto/",
-                    f"node --max-old-space-size=5120 instancer.js {ParamToArgument({'input': '$<', 'output': '$@', 'instance': notoInstance})}",
+                    f"node --max-old-space-size=2048 instancer.js {ParamToArgument({'input': '$<', 'output': '$@', 'instance': notoInstance})}",
                 ]
             }
 
@@ -860,7 +860,7 @@ if __name__ == "__main__":
                 "depend": [f"source/noto/NotoSans-VF.otf"],
                 "command": [
                     "mkdir -p build/noto/",
-                    f"node --max-old-space-size=5120 instancer.js {ParamToArgument({'input': '$<', 'output': '$@', 'instance': notoInstance})}",
+                    f"node --max-old-space-size=2048 instancer.js {ParamToArgument({'input': '$<', 'output': '$@', 'instance': notoInstance})}",
                 ]
             }
 
@@ -875,7 +875,7 @@ if __name__ == "__main__":
             "depend": [f"source/shs/{dep['CJK']['region']}-VF.otf"],
             "command": [
                 "mkdir -p build/shs/",
-                f"node --max-old-space-size=5120 instancer.js {ParamToArgument({'input': '$<', 'output': '$@', 'instance': shsInstance})}",
+                f"node --max-old-space-size=2048 instancer.js {ParamToArgument({'input': '$<', 'output': '$@', 'instance': shsInstance})}",
             ]
         }
 
